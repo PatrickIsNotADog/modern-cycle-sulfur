@@ -80,7 +80,7 @@ program test
 
   !loop on time 
   dt = secondsPerDay
-  tend = secondsPerDay * 365d0*10d0
+  tend = secondsPerDay * 365d0*60d0
   t = 0d0
 
   !loop on time
