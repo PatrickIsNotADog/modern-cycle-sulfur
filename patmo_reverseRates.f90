@@ -188,7 +188,7 @@ contains
     !        - 2.306419d4*invTgas(i) &
     !        + 7.693985d0)*(1.3806488d-22*Tgas(i))**(-1)
     !  else
-        krate(i,61) = 5.2d3
+        krate(i,61) = 5.2d3			!Murrells
     !  end if
     end do
 
