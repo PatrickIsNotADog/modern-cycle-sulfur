@@ -1,0 +1,19 @@
+########################
+
+#@var:T=Tgas
+@format:idx,R,R,P,P,P,rate
+
+
+1,CS2,OH,SCSOH,,,8.00d-12		
+2,SCSOH,O2,COS,HSO2,,2.80d-11			
+3,CS,O2,COS,O,,2.9d-19 		
+4,CS,O3,COS,O2,,3.0d-16 			
+5,HSO2,O2,HO2,SO2,,3.01d-13				
+6,CS2E,O2,CS2,,,2.5d-11
+7,CS2E,N2,CS2,,,2.5d-11
+8,CS2E,O2,CS,SO2,,1.25d-12
+9,CS,O2,CO,SO,,3.01d-18
+10,SCSOH,,CS2,OH,,6.16d+3	#reverse reaction of CS2+OG->SCSOH
+11,SO,O3,SO2,O2,,4.50d-12*exp(-1170/T) 		
+12,SO,O2,SO2,O,,1.60d-13*exp(-2282/T)		
+13,SO,OH,SO2,H,,2.70d-11*exp(335/T)	
