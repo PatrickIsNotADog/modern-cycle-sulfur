@@ -90,10 +90,6 @@ contains
             (indexReactants1(i)-1)*cellsNumber+j) = &
             pd_vec((indexProducts2(i)-1)*cellsNumber+j, &
             (indexReactants1(i)-1)*cellsNumber+j) + flux1(j)
-        pd_vec((indexProducts3(i)-1)*cellsNumber+j, &
-            (indexReactants1(i)-1)*cellsNumber+j) = &
-            pd_vec((indexProducts3(i)-1)*cellsNumber+j, &
-            (indexReactants1(i)-1)*cellsNumber+j) + flux1(j)
 
         pd_vec((indexReactants1(i)-1)*cellsNumber+j, &
             (indexReactants2(i)-1)*cellsNumber+j) = &
@@ -111,10 +107,6 @@ contains
         pd_vec((indexProducts2(i)-1)*cellsNumber+j, &
             (indexReactants2(i)-1)*cellsNumber+j) = &
             pd_vec((indexProducts2(i)-1)*cellsNumber+j, &
-            (indexReactants2(i)-1)*cellsNumber+j) + flux2(j)
-        pd_vec((indexProducts3(i)-1)*cellsNumber+j, &
-            (indexReactants2(i)-1)*cellsNumber+j) = &
-            pd_vec((indexProducts3(i)-1)*cellsNumber+j, &
             (indexReactants2(i)-1)*cellsNumber+j) + flux2(j)
 
       end do

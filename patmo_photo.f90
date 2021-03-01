@@ -42,24 +42,14 @@ contains
     use patmo_parameters
     implicit none
 
-    !COS -> CO + S
-    call loadPhotoXsec("xsecs/COS__CO_S.dat",1)
     !O3 -> O2 + O
-    call loadPhotoXsec("xsecs/O3__O2_O.dat",2)
+    call loadPhotoXsec("xsecs/O3__O2_O.dat",1)
+    !SO2 -> SO + O
+    call loadPhotoXsec("xsecs/SO2__SO_O.dat",2)
     !O2 -> O + O
     call loadPhotoXsec("xsecs/O2__O_O.dat",3)
-    !CS2 -> CS + S
-    call loadPhotoXsec("xsecs/CS2__CS_S.dat",4)
     !CS2 -> CS2E
-    call loadPhotoXsec("xsecs/CS2__CS2E.dat",5)
-    !SO2 -> SO + O
-    call loadPhotoXsec("xsecs/SO2__SO_O.dat",6)
-    !SO3 -> SO2 + O
-    call loadPhotoXsec("xsecs/SO3__SO2_O.dat",7)
-    !H2S -> SH + H
-    call loadPhotoXsec("xsecs/H2S__SH_H.dat",8)
-    !SO -> S + O
-    call loadPhotoXsec("xsecs/SO__S_O.dat",9)
+    call loadPhotoXsec("xsecs/CS2__CS2E.dat",4)
 
   end subroutine loadAllPhotoXsecs
 

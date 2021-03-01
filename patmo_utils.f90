@@ -155,7 +155,6 @@ contains
         degree(indexReactants2(i)) = degree(indexReactants2(i)) + 1
         degree(indexProducts1(i)) = degree(indexProducts1(i)) + 1
         degree(indexProducts2(i)) = degree(indexProducts2(i)) + 1
-        degree(indexProducts3(i)) = degree(indexProducts3(i)) + 1
 
       end if
     end do
@@ -195,38 +194,21 @@ contains
     real*8::getspeciesMass(speciesNumber)
 
     getSpeciesMass(patmo_idx_COS) = 9.040424d-23
-    getSpeciesMass(patmo_idx_S2) = 1.071507d-22
-    getSpeciesMass(patmo_idx_O3) = 8.036305d-23
-    getSpeciesMass(patmo_idx_O2) = 5.357536d-23
-    getSpeciesMass(patmo_idx_NO2) = 7.701459d-23
-    getSpeciesMass(patmo_idx_NO) = 5.02269d-23
-    getSpeciesMass(patmo_idx_HSO) = 8.203658d-23
-    getSpeciesMass(patmo_idx_HO2) = 5.52489d-23
-    getSpeciesMass(patmo_idx_HSO2) = 1.088243d-22
-    getSpeciesMass(patmo_idx_HSO3) = 1.356119d-22
-    getSpeciesMass(patmo_idx_CS2) = 1.171919d-22
-    getSpeciesMass(patmo_idx_CH4O3S) = 1.506737d-22
     getSpeciesMass(patmo_idx_CO) = 3.682888d-23
-    getSpeciesMass(patmo_idx_H) = 1.673533d-24
-    getSpeciesMass(patmo_idx_O) = 2.678768d-23
-    getSpeciesMass(patmo_idx_N) = 2.343922d-23
-    getSpeciesMass(patmo_idx_S) = 5.357536d-23
-    getSpeciesMass(patmo_idx_SO2) = 1.071507d-22
-    getSpeciesMass(patmo_idx_SO4) = 1.607261d-22
-    getSpeciesMass(patmo_idx_CS) = 6.361656d-23
-    getSpeciesMass(patmo_idx_N2) = 4.687844d-23
-    getSpeciesMass(patmo_idx_CO2) = 6.361656d-23
     getSpeciesMass(patmo_idx_SCSOH) = 1.456531d-22
     getSpeciesMass(patmo_idx_OH) = 2.846122d-23
-    getSpeciesMass(patmo_idx_H2) = 3.347066d-24
-    getSpeciesMass(patmo_idx_H2SO4) = 1.640732d-22
-    getSpeciesMass(patmo_idx_SO3) = 1.339384d-22
-    getSpeciesMass(patmo_idx_H2S) = 5.692243d-23
-    getSpeciesMass(patmo_idx_H2O) = 3.013475d-23
-    getSpeciesMass(patmo_idx_SH) = 5.52489d-23
-    getSpeciesMass(patmo_idx_SO) = 8.036305d-23
+    getSpeciesMass(patmo_idx_O3) = 8.036305d-23
+    getSpeciesMass(patmo_idx_O) = 2.678768d-23
+    getSpeciesMass(patmo_idx_SO2) = 1.071507d-22
+    getSpeciesMass(patmo_idx_HO2) = 5.52489d-23
     getSpeciesMass(patmo_idx_CS2E) = 1.272415d-22
-    getSpeciesMass(patmo_idx_CH3SCH3) = 8.369896d-23
+    getSpeciesMass(patmo_idx_H) = 1.673533d-24
+    getSpeciesMass(patmo_idx_CS) = 6.361656d-23
+    getSpeciesMass(patmo_idx_SO) = 8.036305d-23
+    getSpeciesMass(patmo_idx_N2) = 4.687844d-23
+    getSpeciesMass(patmo_idx_HSO2) = 1.088243d-22
+    getSpeciesMass(patmo_idx_O2) = 5.357536d-23
+    getSpeciesMass(patmo_idx_CS2) = 1.171919d-22
 
   end function getSpeciesMass
 
@@ -238,38 +220,21 @@ contains
     character(len=maxNameLength)::getSpeciesNames(speciesNumber)
 
     getSpeciesNames(patmo_idx_COS) = "COS"
-    getSpeciesNames(patmo_idx_S2) = "S2"
-    getSpeciesNames(patmo_idx_O3) = "O3"
-    getSpeciesNames(patmo_idx_O2) = "O2"
-    getSpeciesNames(patmo_idx_NO2) = "NO2"
-    getSpeciesNames(patmo_idx_NO) = "NO"
-    getSpeciesNames(patmo_idx_HSO) = "HSO"
-    getSpeciesNames(patmo_idx_HO2) = "HO2"
-    getSpeciesNames(patmo_idx_HSO2) = "HSO2"
-    getSpeciesNames(patmo_idx_HSO3) = "HSO3"
-    getSpeciesNames(patmo_idx_CS2) = "CS2"
-    getSpeciesNames(patmo_idx_CH4O3S) = "CH4O3S"
     getSpeciesNames(patmo_idx_CO) = "CO"
-    getSpeciesNames(patmo_idx_H) = "H"
-    getSpeciesNames(patmo_idx_O) = "O"
-    getSpeciesNames(patmo_idx_N) = "N"
-    getSpeciesNames(patmo_idx_S) = "S"
-    getSpeciesNames(patmo_idx_SO2) = "SO2"
-    getSpeciesNames(patmo_idx_SO4) = "SO4"
-    getSpeciesNames(patmo_idx_CS) = "CS"
-    getSpeciesNames(patmo_idx_N2) = "N2"
-    getSpeciesNames(patmo_idx_CO2) = "CO2"
     getSpeciesNames(patmo_idx_SCSOH) = "SCSOH"
     getSpeciesNames(patmo_idx_OH) = "OH"
-    getSpeciesNames(patmo_idx_H2) = "H2"
-    getSpeciesNames(patmo_idx_H2SO4) = "H2SO4"
-    getSpeciesNames(patmo_idx_SO3) = "SO3"
-    getSpeciesNames(patmo_idx_H2S) = "H2S"
-    getSpeciesNames(patmo_idx_H2O) = "H2O"
-    getSpeciesNames(patmo_idx_SH) = "SH"
-    getSpeciesNames(patmo_idx_SO) = "SO"
+    getSpeciesNames(patmo_idx_O3) = "O3"
+    getSpeciesNames(patmo_idx_O) = "O"
+    getSpeciesNames(patmo_idx_SO2) = "SO2"
+    getSpeciesNames(patmo_idx_HO2) = "HO2"
     getSpeciesNames(patmo_idx_CS2E) = "CS2E"
-    getSpeciesNames(patmo_idx_CH3SCH3) = "CH3SCH3"
+    getSpeciesNames(patmo_idx_H) = "H"
+    getSpeciesNames(patmo_idx_CS) = "CS"
+    getSpeciesNames(patmo_idx_SO) = "SO"
+    getSpeciesNames(patmo_idx_N2) = "N2"
+    getSpeciesNames(patmo_idx_HSO2) = "HSO2"
+    getSpeciesNames(patmo_idx_O2) = "O2"
+    getSpeciesNames(patmo_idx_CS2) = "CS2"
 
   end function getSpeciesNames
 
@@ -288,13 +253,10 @@ contains
 
     do icell=1,cellsNumber
       getTotalMassNuclei_C = getTotalMassNuclei_C + m(patmo_idx_COS) * nall(icell,patmo_idx_COS)
-      getTotalMassNuclei_C = getTotalMassNuclei_C + m(patmo_idx_CS2) * nall(icell,patmo_idx_CS2)
-      getTotalMassNuclei_C = getTotalMassNuclei_C + m(patmo_idx_CH4O3S) * nall(icell,patmo_idx_CH4O3S)
       getTotalMassNuclei_C = getTotalMassNuclei_C + m(patmo_idx_CO) * nall(icell,patmo_idx_CO)
-      getTotalMassNuclei_C = getTotalMassNuclei_C + m(patmo_idx_CS) * nall(icell,patmo_idx_CS)
-      getTotalMassNuclei_C = getTotalMassNuclei_C + m(patmo_idx_CO2) * nall(icell,patmo_idx_CO2)
       getTotalMassNuclei_C = getTotalMassNuclei_C + m(patmo_idx_SCSOH) * nall(icell,patmo_idx_SCSOH)
-      getTotalMassNuclei_C = getTotalMassNuclei_C + m(patmo_idx_CH3SCH3) * nall(icell,patmo_idx_CH3SCH3)
+      getTotalMassNuclei_C = getTotalMassNuclei_C + m(patmo_idx_CS) * nall(icell,patmo_idx_CS)
+      getTotalMassNuclei_C = getTotalMassNuclei_C + m(patmo_idx_CS2) * nall(icell,patmo_idx_CS2)
     end do
 
   end function
@@ -313,20 +275,11 @@ contains
     getTotalMassNuclei_H = 0d0
 
     do icell=1,cellsNumber
-      getTotalMassNuclei_H = getTotalMassNuclei_H + m(patmo_idx_HSO) * nall(icell,patmo_idx_HSO)
-      getTotalMassNuclei_H = getTotalMassNuclei_H + m(patmo_idx_HO2) * nall(icell,patmo_idx_HO2)
-      getTotalMassNuclei_H = getTotalMassNuclei_H + m(patmo_idx_HSO2) * nall(icell,patmo_idx_HSO2)
-      getTotalMassNuclei_H = getTotalMassNuclei_H + m(patmo_idx_HSO3) * nall(icell,patmo_idx_HSO3)
-      getTotalMassNuclei_H = getTotalMassNuclei_H + m(patmo_idx_CH4O3S) * nall(icell,patmo_idx_CH4O3S) * 4d0
-      getTotalMassNuclei_H = getTotalMassNuclei_H + m(patmo_idx_H) * nall(icell,patmo_idx_H)
       getTotalMassNuclei_H = getTotalMassNuclei_H + m(patmo_idx_SCSOH) * nall(icell,patmo_idx_SCSOH)
       getTotalMassNuclei_H = getTotalMassNuclei_H + m(patmo_idx_OH) * nall(icell,patmo_idx_OH)
-      getTotalMassNuclei_H = getTotalMassNuclei_H + m(patmo_idx_H2) * nall(icell,patmo_idx_H2) * 2d0
-      getTotalMassNuclei_H = getTotalMassNuclei_H + m(patmo_idx_H2SO4) * nall(icell,patmo_idx_H2SO4) * 2d0
-      getTotalMassNuclei_H = getTotalMassNuclei_H + m(patmo_idx_H2S) * nall(icell,patmo_idx_H2S) * 2d0
-      getTotalMassNuclei_H = getTotalMassNuclei_H + m(patmo_idx_H2O) * nall(icell,patmo_idx_H2O) * 2d0
-      getTotalMassNuclei_H = getTotalMassNuclei_H + m(patmo_idx_SH) * nall(icell,patmo_idx_SH)
-      getTotalMassNuclei_H = getTotalMassNuclei_H + m(patmo_idx_CH3SCH3) * nall(icell,patmo_idx_CH3SCH3) * 3d0
+      getTotalMassNuclei_H = getTotalMassNuclei_H + m(patmo_idx_HO2) * nall(icell,patmo_idx_HO2)
+      getTotalMassNuclei_H = getTotalMassNuclei_H + m(patmo_idx_H) * nall(icell,patmo_idx_H)
+      getTotalMassNuclei_H = getTotalMassNuclei_H + m(patmo_idx_HSO2) * nall(icell,patmo_idx_HSO2)
     end do
 
   end function
@@ -346,26 +299,16 @@ contains
 
     do icell=1,cellsNumber
       getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_COS) * nall(icell,patmo_idx_COS)
-      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_O3) * nall(icell,patmo_idx_O3) * 3d0
-      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_O2) * nall(icell,patmo_idx_O2) * 2d0
-      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_NO2) * nall(icell,patmo_idx_NO2) * 2d0
-      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_NO) * nall(icell,patmo_idx_NO)
-      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_HSO) * nall(icell,patmo_idx_HSO)
-      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_HO2) * nall(icell,patmo_idx_HO2) * 2d0
-      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_HSO2) * nall(icell,patmo_idx_HSO2) * 2d0
-      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_HSO3) * nall(icell,patmo_idx_HSO3) * 3d0
-      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_CH4O3S) * nall(icell,patmo_idx_CH4O3S) * 3d0
       getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_CO) * nall(icell,patmo_idx_CO)
-      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_O) * nall(icell,patmo_idx_O)
-      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_SO2) * nall(icell,patmo_idx_SO2) * 2d0
-      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_SO4) * nall(icell,patmo_idx_SO4) * 4d0
-      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_CO2) * nall(icell,patmo_idx_CO2) * 2d0
       getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_SCSOH) * nall(icell,patmo_idx_SCSOH)
       getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_OH) * nall(icell,patmo_idx_OH)
-      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_H2SO4) * nall(icell,patmo_idx_H2SO4) * 4d0
-      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_SO3) * nall(icell,patmo_idx_SO3) * 3d0
-      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_H2O) * nall(icell,patmo_idx_H2O)
+      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_O3) * nall(icell,patmo_idx_O3) * 3d0
+      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_O) * nall(icell,patmo_idx_O)
+      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_SO2) * nall(icell,patmo_idx_SO2) * 2d0
+      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_HO2) * nall(icell,patmo_idx_HO2) * 2d0
       getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_SO) * nall(icell,patmo_idx_SO)
+      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_HSO2) * nall(icell,patmo_idx_HSO2) * 2d0
+      getTotalMassNuclei_O = getTotalMassNuclei_O + m(patmo_idx_O2) * nall(icell,patmo_idx_O2) * 2d0
     end do
 
   end function
@@ -384,9 +327,6 @@ contains
     getTotalMassNuclei_N = 0d0
 
     do icell=1,cellsNumber
-      getTotalMassNuclei_N = getTotalMassNuclei_N + m(patmo_idx_NO2) * nall(icell,patmo_idx_NO2)
-      getTotalMassNuclei_N = getTotalMassNuclei_N + m(patmo_idx_NO) * nall(icell,patmo_idx_NO)
-      getTotalMassNuclei_N = getTotalMassNuclei_N + m(patmo_idx_N) * nall(icell,patmo_idx_N)
       getTotalMassNuclei_N = getTotalMassNuclei_N + m(patmo_idx_N2) * nall(icell,patmo_idx_N2) * 2d0
     end do
 
@@ -407,23 +347,12 @@ contains
 
     do icell=1,cellsNumber
       getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_COS) * nall(icell,patmo_idx_COS)
-      getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_S2) * nall(icell,patmo_idx_S2) * 2d0
-      getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_HSO) * nall(icell,patmo_idx_HSO)
-      getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_HSO2) * nall(icell,patmo_idx_HSO2)
-      getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_HSO3) * nall(icell,patmo_idx_HSO3)
-      getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_CS2) * nall(icell,patmo_idx_CS2) * 2d0
-      getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_CH4O3S) * nall(icell,patmo_idx_CH4O3S)
-      getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_S) * nall(icell,patmo_idx_S)
-      getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_SO2) * nall(icell,patmo_idx_SO2)
-      getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_SO4) * nall(icell,patmo_idx_SO4)
-      getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_CS) * nall(icell,patmo_idx_CS)
       getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_SCSOH) * nall(icell,patmo_idx_SCSOH)
-      getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_H2SO4) * nall(icell,patmo_idx_H2SO4)
-      getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_SO3) * nall(icell,patmo_idx_SO3)
-      getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_H2S) * nall(icell,patmo_idx_H2S)
-      getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_SH) * nall(icell,patmo_idx_SH)
+      getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_SO2) * nall(icell,patmo_idx_SO2)
+      getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_CS) * nall(icell,patmo_idx_CS)
       getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_SO) * nall(icell,patmo_idx_SO)
-      getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_CH3SCH3) * nall(icell,patmo_idx_CH3SCH3)
+      getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_HSO2) * nall(icell,patmo_idx_HSO2)
+      getTotalMassNuclei_S = getTotalMassNuclei_S + m(patmo_idx_CS2) * nall(icell,patmo_idx_CS2) * 2d0
     end do
 
   end function

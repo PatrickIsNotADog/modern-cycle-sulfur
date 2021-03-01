@@ -29,49 +29,46 @@ program test
 
     !calculate wet deposition
       call computewetdep(1,2.0d-2)   !OCS
-      call computewetdep(11,5.0d-2)  !CS2
-	  call computewetdep(28,1.0d-1)  !H2S
-	  call computewetdep(18,4.0d3)  !SO2
-  	  ! call computewetdep(26,5d14)  !H2SO4
-	  call computewetdep(19,5d14)  !SO4
+      call computewetdep(16,5.0d-2)  !CS2
+	   call computewetdep(7,4.0d3)  !SO2
 
  !Turco H2SO4
- wetdep(12,26) = 1.77E-06
- wetdep(11,26) = 3.54E-06
- wetdep(10,26) = 5.31E-06
- wetdep(9,26) = 7.08E-06
- wetdep(8,26) = 8.85E-06
- wetdep(7,26) =  1.06E-05
- wetdep(6,26) = 1.24E-05
- wetdep(5,26) = 1.42E-05
- wetdep(4,26) = 1.59E-05
- wetdep(3,26) = 1.77E-05
- wetdep(2,26) = 1.95E-05
- wetdep(1,26) = 2.12E-05
+! wetdep(12,24) = 1.77E-06
+! wetdep(11,24) = 3.54E-06
+! wetdep(10,24) = 5.31E-06
+! wetdep(9,24) = 7.08E-06
+! wetdep(8,24) = 8.85E-06
+! wetdep(7,24) =  1.06E-05
+! wetdep(6,24) = 1.24E-05
+! wetdep(5,24) = 1.42E-05
+! wetdep(4,24) = 1.59E-05
+! wetdep(3,24) = 1.77E-05
+! wetdep(2,24) = 1.95E-05
+! wetdep(1,24) = 2.12E-05
      
  va(:) = 0d0  
  pa(:) = 0d0  
  
-  open(60,file="vapor_H2SO4.txt",status="old")  
-    do i=13,34
-       read(60,*) va(i)
-	end do
-  close(60)
+!  open(60,file="vapor_H2SO4.txt",status="old")  
+!    do i=13,34
+!       read(60,*) va(i)
+!	end do
+!  close(60)
 
-  open(61,file="partial_H2SO4.txt",status="old") 
-    do i=13,34
-       read(61,*) pa(i)
-	end do
-  close(61)
+!  open(61,file="partial_H2SO4.txt",status="old") 
+!    do i=13,34
+!       read(61,*) pa(i)
+!	end do
+!  close(61)
 
 
  gd(:) = 0d0   
    
-  open(62,file="SO4_deposition_rate.txt",status="old")  
-    do i=1,60
-       read(62,*) gd(i)
-	end do
-  close(62)
+!  open(62,file="SO4_deposition_rate.txt",status="old")  
+!    do i=1,60
+!       read(62,*) gd(i)
+!	end do
+!  close(62)
 
   
   !get initial mass, g/cm3
@@ -92,29 +89,15 @@ program test
 
 	 	 t = t + dt
 		 
-  if(t==315360000d0)then 
-      call patmo_dumpDensityToFile(35,t,patmo_idx_COS)
- 	  call patmo_dumpDensityToFile(36,t,patmo_idx_S2)
-	  call patmo_dumpDensityToFile(37,t,patmo_idx_HSO)
-	  call patmo_dumpDensityToFile(38,t,patmo_idx_HSO2)
- 	  call patmo_dumpDensityToFile(39,t,patmo_idx_HSO3)
-  	  call patmo_dumpDensityToFile(40,t,patmo_idx_CS2)
-      call patmo_dumpDensityToFile(41,t,patmo_idx_SO3)
-      call patmo_dumpDensityToFile(42,t,patmo_idx_CH4O3S)
-      call patmo_dumpDensityToFile(43,t,patmo_idx_SO4)
-	  call patmo_dumpDensityToFile(44,t,patmo_idx_S)
-	  call patmo_dumpDensityToFile(45,t,patmo_idx_SO2)
-	  call patmo_dumpDensityToFile(46,t,patmo_idx_SO4)
-	  call patmo_dumpDensityToFile(47,t,patmo_idx_CS)
-	  call patmo_dumpDensityToFile(48,t,patmo_idx_SCSOH)
-	  call patmo_dumpDensityToFile(49,t,patmo_idx_H2SO4)
-	  call patmo_dumpDensityToFile(50,t,patmo_idx_SO3)
-	  call patmo_dumpDensityToFile(51,t,patmo_idx_H2S)
-	  call patmo_dumpDensityToFile(52,t,patmo_idx_SH)
-	  call patmo_dumpDensityToFile(53,t,patmo_idx_SO)
-	  call patmo_dumpDensityToFile(54,t,patmo_idx_CS2E)
-	  call patmo_dumpDensityToFile(55,t,patmo_idx_CH3SCH3)
- end if	  
+        if(t==315360000d0)then 
+         call patmo_dumpDensityToFile(35,t,patmo_idx_COS)
+          call patmo_dumpDensityToFile(36,t,patmo_idx_SO2)
+         call patmo_dumpDensityToFile(37,t,patmo_idx_CS2)
+         call patmo_dumpDensityToFile(38,t,patmo_idx_SCSOH)
+         call patmo_dumpDensityToFile(39,t,patmo_idx_CS2E)
+         call patmo_dumpDensityToFile(40,t,patmo_idx_CS)
+         call patmo_dumpDensityToFile(41,t,patmo_idx_HSO2)
+      end if	 
 
 ! do i=1,cellsNumber
      ! write(27,*)  krate(i,40), krate(i,39)  !O2,O3
@@ -212,7 +195,7 @@ end program test
     end do
    end if
 	 	 
-   if (i==11) then
+   if (i==16) then
 	do j=1,12
       open  (25,file="Rainout-CS2.txt")
       write (25,*) 'ZKM', zkm(j)
@@ -220,15 +203,15 @@ end program test
     end do
    end if 
 	 	 
-   if (i==28) then
- 	do j=1,12
-      open  (26,file="Rainout-H2S.txt")
-      write (26,*) 'ZKM', zkm(j)
-	  write (26,*) 'K_RAIN',  wetdep(j,i)
-    end do
+   if (i==26) then
+! 	do j=1,12
+!      open  (26,file="Rainout-H2S.txt")
+!      write (26,*) 'ZKM', zkm(j)
+!	  write (26,*) 'K_RAIN',  wetdep(j,i)
+!    end do
    end if 	
    
-   if (i==18) then
+   if (i==7) then
    	do j=1,12
       open  (24,file="Rainout-SO2.txt")
       write (24,*) 'ZKM', zkm(j)
@@ -236,20 +219,20 @@ end program test
     end do
    end if 
    
-   if (i==26) then
-   	do j=1,12
-      open  (22,file="Rainout-H2SO4.txt")
-      write (22,*) 'ZKM', zkm(j)
-	  write (22,*) 'K_RAIN',  wetdep(j,i)
-    end do
+   if (i==24) then
+!   	do j=1,12
+!      open  (22,file="Rainout-H2SO4.txt")
+!      write (22,*) 'ZKM', zkm(j)
+!	  write (22,*) 'K_RAIN',  wetdep(j,i)
+!    end do
    end if 
    
-   if (i==19) then
-	do j=1,12
-      open  (21,file="Rainout-SO4.txt")
-      write (21,*) 'ZKM', zkm(j)
-	  write (21,*) 'K_RAIN',  wetdep(j,i)
-    end do
+   if (i==18) then
+!	do j=1,12
+!      open  (21,file="Rainout-SO4.txt")
+!      write (21,*) 'ZKM', zkm(j)
+!	  write (21,*) 'K_RAIN',  wetdep(j,i)
+!    end do
    end if
 
    end subroutine computewetdep
