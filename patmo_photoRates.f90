@@ -9,31 +9,31 @@ contains
     real*8,intent(in)::tau(photoBinsNumber,cellsNumber)
 
     !COS -> CO + S
-    krate(:,46) = integrateXsec(1, tau(:,:))
+    krate(:,48) = integrateXsec(1, tau(:,:))
 
     !O3 -> O2 + O
-    krate(:,47) = integrateXsec(2, tau(:,:))
+    krate(:,49) = integrateXsec(2, tau(:,:))
 
     !O2 -> O + O
-    krate(:,48) = integrateXsec(3, tau(:,:))
+    krate(:,50) = integrateXsec(3, tau(:,:))
 
     !CS2 -> CS + S
-    krate(:,49) = integrateXsec(4, tau(:,:))
+    krate(:,51) = integrateXsec(4, tau(:,:))
 
     !CS2 -> CS2E
-    krate(:,50) = integrateXsec(5, tau(:,:))
+    krate(:,52) = integrateXsec(5, tau(:,:))
 
     !SO2 -> SO + O
-    krate(:,51) = integrateXsec(6, tau(:,:))
+    krate(:,53) = integrateXsec(6, tau(:,:))
 
     !SO3 -> SO2 + O
-    krate(:,52) = integrateXsec(7, tau(:,:))
+    krate(:,54) = integrateXsec(7, tau(:,:))
 
     !H2S -> SH + H
-    krate(:,53) = integrateXsec(8, tau(:,:))
+    krate(:,55) = integrateXsec(8, tau(:,:))
 
     !SO -> S + O
-    krate(:,54) = integrateXsec(9, tau(:,:))
+    krate(:,56) = integrateXsec(9, tau(:,:))
 
   end subroutine computePhotoRates
 

@@ -1,10 +1,10 @@
 module patmo_commons
   implicit none
 
-  integer,parameter::reactionsNumber = 99
-  integer,parameter::chemReactionsNumber = 45
+  integer,parameter::reactionsNumber = 103
+  integer,parameter::chemReactionsNumber = 47
   integer,parameter::photoReactionsNumber = 9
-  integer,parameter::reverseReactionsNumber = 45
+  integer,parameter::reverseReactionsNumber = 47
   integer,parameter::chemSpeciesNumber = 33
   integer,parameter::speciesNumber = 35
   integer,parameter::positionTgas = 34
@@ -100,6 +100,8 @@ module patmo_commons
       patmo_idx_N2,&
       patmo_idx_O2,&
       patmo_idx_O,&
+      patmo_idx_O2,&
+      positionDummy,&
       positionDummy,&
       positionDummy,&
       positionDummy,&
@@ -153,7 +155,9 @@ module patmo_commons
       positionDummy,&
       positionDummy,&
       patmo_idx_SO2,&
-      patmo_idx_SO/)
+      patmo_idx_SO,&
+      patmo_idx_SO,&
+      patmo_idx_OH/)
   integer,parameter,dimension(reactionsNumber)::indexReactants1 = (/patmo_idx_COS,&
       patmo_idx_COS,&
       patmo_idx_CS2,&
@@ -199,6 +203,8 @@ module patmo_commons
       patmo_idx_CS2E,&
       patmo_idx_CS2E,&
       patmo_idx_S2,&
+      patmo_idx_CS,&
+      patmo_idx_SCSOH,&
       patmo_idx_COS,&
       patmo_idx_O3,&
       patmo_idx_O2,&
@@ -252,7 +258,9 @@ module patmo_commons
       patmo_idx_CS2,&
       patmo_idx_CS2,&
       patmo_idx_CS,&
-      patmo_idx_S/)
+      patmo_idx_S,&
+      patmo_idx_CO,&
+      patmo_idx_CS2/)
   integer,parameter,dimension(reactionsNumber)::indexProducts2 = (/patmo_idx_SH,&
       patmo_idx_SO,&
       patmo_idx_COS,&
@@ -298,6 +306,8 @@ module patmo_commons
       positionDummy,&
       patmo_idx_SO2,&
       patmo_idx_SO,&
+      patmo_idx_SO,&
+      patmo_idx_OH,&
       patmo_idx_S,&
       patmo_idx_O,&
       patmo_idx_O,&
@@ -351,7 +361,9 @@ module patmo_commons
       patmo_idx_O2,&
       patmo_idx_N2,&
       patmo_idx_O2,&
-      patmo_idx_O/)
+      patmo_idx_O,&
+      patmo_idx_O2,&
+      positionDummy/)
   integer,parameter,dimension(reactionsNumber)::indexProducts3 = (/positionDummy,&
       positionDummy,&
       positionDummy,&
@@ -387,6 +399,10 @@ module patmo_commons
       positionDummy,&
       positionDummy,&
       patmo_idx_OH,&
+      positionDummy,&
+      positionDummy,&
+      positionDummy,&
+      positionDummy,&
       positionDummy,&
       positionDummy,&
       positionDummy,&
@@ -497,6 +513,8 @@ module patmo_commons
       patmo_idx_CS,&
       patmo_idx_S,&
       patmo_idx_CO,&
+      patmo_idx_CS2,&
+      patmo_idx_CO,&
       patmo_idx_O2,&
       patmo_idx_O,&
       patmo_idx_CS,&
@@ -549,6 +567,8 @@ module patmo_commons
       patmo_idx_CS2E,&
       patmo_idx_CS2E,&
       patmo_idx_CS2E,&
-      patmo_idx_S2/)
+      patmo_idx_S2,&
+      patmo_idx_CS,&
+      patmo_idx_SCSOH/)
 
 end module patmo_commons

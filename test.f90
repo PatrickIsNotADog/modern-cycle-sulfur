@@ -93,7 +93,7 @@ program test
 	 	 t = t + dt
 		 
   if(t==315360000d0)then 
-     call patmo_dumpDensityToFile(35,t,patmo_idx_COS)
+      call patmo_dumpDensityToFile(35,t,patmo_idx_COS)
  	  call patmo_dumpDensityToFile(36,t,patmo_idx_S2)
 	  call patmo_dumpDensityToFile(37,t,patmo_idx_HSO)
 	  call patmo_dumpDensityToFile(38,t,patmo_idx_HSO2)
@@ -101,7 +101,7 @@ program test
   	  call patmo_dumpDensityToFile(40,t,patmo_idx_CS2)
       call patmo_dumpDensityToFile(41,t,patmo_idx_SO3)
       call patmo_dumpDensityToFile(42,t,patmo_idx_CH4O3S)
-    !  call patmo_dumpDensityToFile(43,t,patmo_idx_CS2Cl)
+      call patmo_dumpDensityToFile(43,t,patmo_idx_SO4)
 	  call patmo_dumpDensityToFile(44,t,patmo_idx_S)
 	  call patmo_dumpDensityToFile(45,t,patmo_idx_SO2)
 	  call patmo_dumpDensityToFile(46,t,patmo_idx_SO4)
@@ -114,7 +114,7 @@ program test
 	  call patmo_dumpDensityToFile(53,t,patmo_idx_SO)
 	  call patmo_dumpDensityToFile(54,t,patmo_idx_CS2E)
 	  call patmo_dumpDensityToFile(55,t,patmo_idx_CH3SCH3)
- end if	 
+ end if	  
 
 ! do i=1,cellsNumber
      ! write(27,*)  krate(i,40), krate(i,39)  !O2,O3
@@ -123,7 +123,7 @@ program test
 ! end do
 
 do i=1,cellsNumber
-    !  write(27,*)  krate(i,63), krate(i,73), krate(i,74) 
+!      write(27,*)  krate(i,63), krate(i,73), krate(i,74) 
 end do
 
 
@@ -141,7 +141,8 @@ end do
   call patmo_dumpOpacity("opacity.dat")
   call patmo_dumpJValue("jvalue.dat")
   call patmo_dumpAllRates("rates.dat")
-  call patmo_dumpAllMixingRatioToFile("allNDs.dat")			
+  call patmo_dumpAllReverseRates("reverseRate.dat")
+  call patmo_dumpAllMixingRatioToFile("allNDs.dat")
 end program test
 !**************
     subroutine computewetdep(i,heff)

@@ -42,13 +42,13 @@ contains
       krate(icell,6) = 1.20d-12*exp(-650/T)
 
       !CS2 + OH -> SCSOH
-      krate(icell,7) = 3.80d-13
+      krate(icell,7) = 8.00d-12
 
       !SCSOH + O2 -> COS + HSO2
-      krate(icell,8) = 2.70d-14
+      krate(icell,8) = 2.80d-11
 
       !CS + O2 -> COS + O
-      krate(icell,9) = 2.9d-19
+      krate(icell,9) = 2.91d-19
 
       !CS + O3 -> COS + O2
       krate(icell,10) = 3.0d-16
@@ -118,18 +118,18 @@ contains
 
       !SO2 + O -> SO3
     !  krate(icell,32) = 1.80d-33*(T/300)**(2.00)
-	read(60,*) krate(icell,32)
+      read(60,*) krate(icell,32)
 
       !SO2 + OH -> HSO3
     !  krate(icell,33) = 3.30d-31*(T/300)**(-4.30)
-	read(61,*) krate(icell,33)
+      read(61,*) krate(icell,33)
 
       !SO3 + H2O -> H2SO4
       krate(icell,34) = 1.20d-15
 
       !H2SO4 -> SO2 + OH + OH
     !  krate(icell,35) = 1.20d-15
-	read(59,*) krate(icell,35)
+      read(59,*) krate(icell,35)
 
       !O + O2 -> O3
       krate(icell,36) = 0d0
@@ -148,7 +148,7 @@ contains
 
       !CH3SCH3 + OH -> SO2 + CH4O3S
     !  krate(icell,41) = 3.04d-12*exp(350/T)
-	read(63,*) krate(icell,41)
+      read(63,*) krate(icell,41)
 
       !CS2E + O2 -> CS2
       krate(icell,42) = 2.5d-11
@@ -161,6 +161,12 @@ contains
 
       !S2 + O -> S + SO
       krate(icell,45) = 1.66d-11
+
+      !CS + O2 -> CO + SO
+      krate(icell,46) = 3.01d-18
+
+      !SCSOH -> CS2 + OH
+      krate(icell,47) = 6.16d+3
 
     end do
 

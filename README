@@ -1,0 +1,9 @@
+This folder is based on ./build-getBestFlux_v1.1
+One more reaction "CS+O2->CO+SO" is added.
+This changes the CS2's photo-oxidation sink pathway.
+
+2121.2.2 update
+3 reactions' rate coefficient
+1,CS2,OH,SCSOH,,,8.00d-12 Atkinson2004
+2,SCSOH,O2,COS,HSO2,,2.80d-11
+3,SCSOH,,CS2,OH,,6.16d+3

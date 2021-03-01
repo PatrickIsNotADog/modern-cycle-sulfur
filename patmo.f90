@@ -270,11 +270,11 @@ contains
 
     !scale geometric flux
     photoFlux(:) =  pi*rstar**2/dstar**2 * photoFlux(:)
-	open(58,file="solar_flux.txt",status="old")
-	  do i=1,photoBinsNumber
-	    read(58,*) photoFlux(i)
-	  end do
-     close(58)	
+		open(58,file="solar_flux.txt",status="old")
+		do i=1,photoBinsNumber
+			read(58,*) photoFlux(i)
+		end do
+	close(58)
 
   end subroutine patmo_setFluxBB
 
@@ -567,16 +567,6 @@ contains
   end function patmo_getTotalMass
 
 !***************************
-function patmo_getTotalMassNuclei_H()
- use patmo_utils
- implicit none
- real*8::patmo_getTotalMassNuclei_H
-
-patmo_getTotalMassNuclei_H = getTotalMassNuclei_H() 
-
-end function
-
-!***************************
 function patmo_getTotalMassNuclei_C()
  use patmo_utils
  implicit none
@@ -587,12 +577,12 @@ patmo_getTotalMassNuclei_C = getTotalMassNuclei_C()
 end function
 
 !***************************
-function patmo_getTotalMassNuclei_S()
+function patmo_getTotalMassNuclei_H()
  use patmo_utils
  implicit none
- real*8::patmo_getTotalMassNuclei_S
+ real*8::patmo_getTotalMassNuclei_H
 
-patmo_getTotalMassNuclei_S = getTotalMassNuclei_S() 
+patmo_getTotalMassNuclei_H = getTotalMassNuclei_H() 
 
 end function
 
@@ -613,6 +603,26 @@ function patmo_getTotalMassNuclei_N()
  real*8::patmo_getTotalMassNuclei_N
 
 patmo_getTotalMassNuclei_N = getTotalMassNuclei_N() 
+
+end function
+
+!***************************
+function patmo_getTotalMassNuclei_S()
+ use patmo_utils
+ implicit none
+ real*8::patmo_getTotalMassNuclei_S
+
+patmo_getTotalMassNuclei_S = getTotalMassNuclei_S() 
+
+end function
+
+!***************************
+function patmo_getTotalMassNuclei_CS2E()
+ use patmo_utils
+ implicit none
+ real*8::patmo_getTotalMassNuclei_CS2E
+
+patmo_getTotalMassNuclei_CS2E = getTotalMassNuclei_CS2E() 
 
 end function
 
@@ -853,4 +863,194 @@ end function
 
   end function patmo_getTgas
 
+  !**************
+!dump J-Values
+  subroutine patmo_dumpJValue(fname)
+   use patmo_commons
+   use patmo_constants
+   use patmo_parameters
+   implicit none
+   character(len=*),intent(in)::fname
+   integer::i
+
+   open(22,file=trim(fname),status="replace")
+   write(22,*)"altitude/km, &
+  CS2+OH->SH+COS, CS2+O->CS+SO, CS2+O->COS+S, CS2+O->CO+S2, CS2+OH->SCSOH, SCSOH+O2->COS+HSO2, &
+  CS2E+O2->CS2, CS2E+N2->CS2, CS2E+O2->CS+SO2, S2+O->S+SO, CS+SO->CS2+O, &
+  COS+S->CS2+O, CO+S2->CS2+O, COS+HSO2->SCSOH+O2, S+SO->S2+O, &
+  COS->CO+S, CS2->CS+S, CS2->CS2E, SO2->SO+O, SO3->SO2+O, &
+  H2S->SH+H, SO->S+O"
+   !loop on cells
+   do i=1,cellsNumber
+       write(22,*) i, &
+     krate(i,1), krate(i,4), krate(i,5), krate(i,6), krate(i,7), krate(i,8), &
+     krate(i,42), krate(i,43),krate(i,44), krate(i,45), krate(i,60), &
+     krate(i,61), krate(i,62), krate(i,64), krate(i,101), &
+     krate(i,48), krate(i,51), krate(i,52), krate(i,53), krate(i,54), &
+     krate(i,55), krate(i,56)
+      
+   end do
+   write(22,*)
+   close(22)
+
+ end subroutine patmo_dumpJValue
+
+ !**************
+ !dump all reaction rates
+ subroutine patmo_dumpAllRates(fname)
+   use patmo_commons
+   use patmo_constants
+   use patmo_parameters
+   implicit none
+   character(len=*),intent(in)::fname
+   integer::i
+
+   open(22,file=trim(fname),status="replace")
+   write(22,*) "altitude/km, &
+  (Forward Reaction) &
+  CS2+OH->SH+COS, CS2+O->CS+SO, CS2+O->COS+S, CS2+O->CO+S2, CS2+OH->SCSOH, SCSOH+O2->COS+HSO2, &
+   CS+O2->COS+O, CS+O3->COS+O2, CS+O->CO+S, &
+   
+   CS2E+O2->CS2, CS2E+N2->CS2, CS2E+O2->CS+SO2, S2+O->S+SO, &
+   CS+O2->CO+SO, SCSOH->CS2+OH, &
+  
+   (added), SO+O3->SO2+O2, SO+O2->SO2+O, SO+OH->SO2+H, SO+NO2->SO2+NO, HSO2+O2->HO2+SO2, &
+ 
+   SH+O->H+SO, SH+O2->OH+SO, SH+O3->HSO+NO, HSO+O2->SO2+OH, HSO+O3->O2+O2+SH, &
+ 
+   S+O2->SO+O, S+O3->O2+SO, S+OH->H+SO,&
+ 
+  (Photochemistry)&
+  COS->CO+S, CS2->CS+S, CS2->CS2E, SO2->SO+O, SO3->SO2+O, &
+  H2S->SH+H, SO->S+O "
+   !loop on cells
+   do i=1,cellsNumber
+       write(22,*) i, &
+       krate(i,3)*nall(i,patmo_idx_CS2)*nall(i,patmo_idx_OH), &
+       krate(i,4)*nall(i,patmo_idx_CS2)*nall(i,patmo_idx_O), &
+       krate(i,5)*nall(i,patmo_idx_CS2)*nall(i,patmo_idx_O), &
+       krate(i,6)*nall(i,patmo_idx_CS2)*nall(i,patmo_idx_O), &
+       krate(i,7)*nall(i,patmo_idx_CS2)*nall(i,patmo_idx_OH), &
+       krate(i,8)*nall(i,patmo_idx_SCSOH)*nall(i,patmo_idx_O2), &
+       krate(i,9)*nall(i,patmo_idx_CS)*nall(i,patmo_idx_O2), &
+       krate(i,10)*nall(i,patmo_idx_CS)*nall(i,patmo_idx_O3), &
+       krate(i,11)*nall(i,patmo_idx_CS)*nall(i,patmo_idx_O), &       
+      
+       krate(i,42)*nall(i,patmo_idx_CS2E)*nall(i,patmo_idx_O2), &
+       krate(i,43)*nall(i,patmo_idx_CS2E)*nall(i,patmo_idx_N2), &
+       krate(i,44)*nall(i,patmo_idx_CS2E)*nall(i,patmo_idx_O2), &
+       krate(i,45)*nall(i,patmo_idx_S2)*nall(i,patmo_idx_O), &
+       krate(i,46)*nall(i,patmo_idx_CS)*nall(i,patmo_idx_O2), &
+       krate(i,47)*nall(i,patmo_idx_SCSOH), &
+
+   
+     krate(i,19)*nall(i,patmo_idx_SO)*nall(i,patmo_idx_O3), &
+     krate(i,20)*nall(i,patmo_idx_SO)*nall(i,patmo_idx_O2), &
+     krate(i,21)*nall(i,patmo_idx_SO)*nall(i,patmo_idx_OH), &
+     krate(i,22)*nall(i,patmo_idx_SO)*nall(i,patmo_idx_NO2), &
+     krate(i,30)*nall(i,patmo_idx_HSO2)*nall(i,patmo_idx_O2), &
+   
+     krate(i,16)*nall(i,patmo_idx_SH)*nall(i,patmo_idx_O), &
+     krate(i,17)*nall(i,patmo_idx_SH)*nall(i,patmo_idx_O2), &
+     krate(i,18)*nall(i,patmo_idx_SH)*nall(i,patmo_idx_O3), &
+     krate(i,28)*nall(i,patmo_idx_HSO)*nall(i,patmo_idx_O2), &
+     krate(i,29)*nall(i,patmo_idx_HSO)*nall(i,patmo_idx_O3), &
+    
+     krate(i,23)*nall(i,patmo_idx_S)*nall(i,patmo_idx_O2), &
+     krate(i,24)*nall(i,patmo_idx_S)*nall(i,patmo_idx_O3), &
+     krate(i,25)*nall(i,patmo_idx_S)*nall(i,patmo_idx_OH), &
+     
+     krate(i,48)*nall(i,patmo_idx_COS), &
+     krate(i,49)*nall(i,patmo_idx_CS2), &
+     krate(i,52)*nall(i,patmo_idx_CS2), &
+     krate(i,53)*nall(i,patmo_idx_SO2), &
+     krate(i,54)*nall(i,patmo_idx_SO3), &
+     krate(i,55)*nall(i,patmo_idx_H2S), &
+     krate(i,56)*nall(i,patmo_idx_SO)
+
+   end do
+   write(22,*)
+   close(22)
+
+end subroutine patmo_dumpAllRates
+
+ !**************
+ !dump all reverse reaction rates
+ subroutine patmo_dumpAllReverseRates(fname)
+   use patmo_commons
+   use patmo_constants
+   use patmo_parameters
+   implicit none
+   character(len=*),intent(in)::fname
+   integer::i
+
+   open(22,file=trim(fname),status="replace")
+   write(22,*) "altitude/km, &
+  SH+OCS->CS2+OH, OCS+S->CS2+O, CS+SO->CS2+O, OCS+O->CS+O2, OCS+O2->CS+O3, &
+  CO+S2->CS2+O, S+SO->S2+O, SO2+O2->SO+O3, SO2+O->SO+O2, SO2+H->SO+OH, SCSOH->CS2+OH, &
+  OCS+HSO2->SCSOH+O2, HO2+SO2->HSO2+O2, H+SO->SH+O, OH+SO->SH+O2, HSO+O2->SH+O3, SO2+OH->HSO+O2, &
+  2O2+SH->HSO+O3, SO+O->S+O2, O2+SO->S+O3, H+SO->S+OH, CO+SO->CS+O2 "
+   !loop on cells
+   do i=1,cellsNumber
+       write(22,*) i, &
+       krate(i,59)*nall(i,patmo_idx_SH)*nall(i,patmo_idx_COS), &
+       krate(i,61)*nall(i,patmo_idx_COS)*nall(i,patmo_idx_S), &
+       krate(i,60)*nall(i,patmo_idx_CS)*nall(i,patmo_idx_SO), &
+       krate(i,65)*nall(i,patmo_idx_COS)*nall(i,patmo_idx_O), &
+       krate(i,66)*nall(i,patmo_idx_COS)*nall(i,patmo_idx_O2), &
+      
+       krate(i,62)*nall(i,patmo_idx_CO)*nall(i,patmo_idx_S2), &
+       krate(i,101)*nall(i,patmo_idx_S)*nall(i,patmo_idx_SO), &
+       krate(i,75)*nall(i,patmo_idx_SO2)*nall(i,patmo_idx_O2), &
+       krate(i,76)*nall(i,patmo_idx_SO2)*nall(i,patmo_idx_O), &
+       krate(i,77)*nall(i,patmo_idx_SO2)*nall(i,patmo_idx_H), &
+       krate(i,47)*nall(i,patmo_idx_SCSOH), &
+      
+       krate(i,64)*nall(i,patmo_idx_COS)*nall(i,patmo_idx_HSO2), &
+       krate(i,86)*nall(i,patmo_idx_HO2)*nall(i,patmo_idx_SO2), &
+       krate(i,72)*nall(i,patmo_idx_H)*nall(i,patmo_idx_SO), &
+       krate(i,73)*nall(i,patmo_idx_OH)*nall(i,patmo_idx_SO), &
+       krate(i,74)*nall(i,patmo_idx_HSO)*nall(i,patmo_idx_O2), &
+       krate(i,84)*nall(i,patmo_idx_SO2)*nall(i,patmo_idx_OH), &
+   
+       krate(i,85)*nall(i,patmo_idx_O2)*nall(i,patmo_idx_O2)*nall(i,patmo_idx_SH), &
+       krate(i,79)*nall(i,patmo_idx_SO)*nall(i,patmo_idx_O), &
+       krate(i,80)*nall(i,patmo_idx_O2)*nall(i,patmo_idx_SO), &
+       krate(i,81)*nall(i,patmo_idx_S)*nall(i,patmo_idx_SO), &
+       krate(i,102)*nall(i,patmo_idx_CO)*nall(i,patmo_idx_SO)
+     
+
+
+   end do
+   write(22,*)
+   close(22)
+
+end subroutine patmo_dumpAllReverseRates
+
+
+subroutine patmo_dumpAllNumberDensityDifference(ifile,nb,na)
+ use patmo_commons
+ use patmo_parameters
+ implicit none
+ integer,intent(in)::ifile
+ real*8,intent(in)::nb(neqAll), na(cellsNumber, speciesNumber)
+ real*8::deltaNAll(cellsNumber, speciesNumber)
+ integer::i,j
+
+ !compute deference
+ do i = 1, speciesNumber
+     deltaNAll(:, i) = nb((i - 1) * cellsNumber + 1 : (i * cellsNumber)) - na(:, i)
+ end do
+
+ ! do j = 1, cellsNumber
+ !     do i = 1, speciesNumber
+ !         write(ifile, *) j, i, deltaNAll(j, i)
+ !     end do
+ ! end do
+ do i = 1, speciesNumber
+     write (ifile, *) i, deltaNAll(:, i)
+ end do
+ write(ifile,*)
+
+end subroutine patmo_dumpAllNumberDensityDifference
 end module patmo
