@@ -1,1 +1,5 @@
-This folder contains full reaction network of CS2 study
+This folder contains full reaction network of CS2 study and is based on branch 'getBestFlux_v1.3'
+
+The top layer solar flux is set as 0 and is in ./solar_flux.txt
+
+The network is in ./@@@sulfur.ntw
